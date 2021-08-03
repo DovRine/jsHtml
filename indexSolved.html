@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map, Filter, Reduce Exercises</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="api.js"></script>
+    <script>
+      function updateBooks(response) {
+        const books = response.data;
+        console.log(books[0]);
+        const booksList = document.getElementById("books-list");
+        booksList.querySelectorAll(".book").forEach((book, idx) => {
+          book.querySelector(".title").innerHTML = books[idx].title;
+          book.querySelector(".author").innerHTML = books[idx].author;
+          book.querySelector('img').src = books[idx].image;
+          book.querySelector('.description').innerHTML = books[idx].description;
+        });
+      }
+      getBooks(1, updateBooks);
+    </script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Books</h1>
+        <div id="books-list">
+            <section class="book">
+                <h3 class="title"></h3>
+                <h6 class="author"></h6>
+                <img src="" alt="Book Cover" />
+                <p class="description"></p>
+                <button class="btn-buy-now">Buy Now</button>
+              </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
